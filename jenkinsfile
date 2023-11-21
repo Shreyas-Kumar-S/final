@@ -12,8 +12,16 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat "C:\\Windows\\System32\\cmd.exe /c mvn clean test"
+                bat "C:\\Windows\\System32\\cmd.exe /c mvn clean test install"
             }
+        }
+    }
+    post{
+        success{
+               echo "All Previous Stages successfully executed"
+        }
+        failure{
+               echo "Error in executing a staging"
         }
     }
 }
